@@ -1,0 +1,2 @@
+/usr/bin/ar qc libcontrollers.a CMakeFiles/controllers.dir/ping.c.o CMakeFiles/controllers.dir/pong.c.o
+/usr/bin/ranlib libcontrollers.a

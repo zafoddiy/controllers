@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/server_exe.dir/server.c.o -o server_exe  ../lib/server/libserver.a ../lib/shared/libshared.a 

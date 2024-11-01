@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/powerpack.dir/powerpack.c.o -o powerpack  ../lib/controllers/libcontrollers.a ../lib/shared/libshared.a 

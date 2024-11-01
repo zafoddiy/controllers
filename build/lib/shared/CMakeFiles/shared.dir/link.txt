@@ -1,0 +1,2 @@
+/usr/bin/ar qc libshared.a CMakeFiles/shared.dir/errors.c.o CMakeFiles/shared.dir/socket_setup.c.o
+/usr/bin/ranlib libshared.a

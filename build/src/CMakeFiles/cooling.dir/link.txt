@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/cooling.dir/cooling.c.o -o cooling  ../lib/controllers/libcontrollers.a ../lib/shared/libshared.a 
