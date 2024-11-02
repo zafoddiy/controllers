@@ -3,26 +3,19 @@ This is a simple project in C that creates 3 UDP clients and a server.
 The general logic is that one controller client (driver) sends out a ping to the server.
 The server then sends the ping to the other two clients (powerpack and cooling), which send a pong
 back to the driver client.
+This project was made on Ubuntu and has not been tested on other operating systems. Due to certain
+implementations being linux specific, this is likely not going to work on Windows.
 # File structure
-/
-├── build
-├── include
-│   └── controllers.h
-├── lib
-│   ├── controllers
-│   │   ├── CMakeLists.txt
-│   │   ├── ping.c
-│   │   └── pong.c
-│   ├── server
-│   │   ├── CMakeLists.txt
-│   │   └── processing.c
-│   └── shared
-│       ├── CMakeLists.txt
-│       ├── errors.c
-│       └── socket_setup.c
-└── src
-    ├── CMakeLists.txt
-    ├── cooling.c
-    ├── drive.c
-    ├── powerpack.c
-    └── server.c
+The general structure for the files follow such that the controllers are easily accessible and
+adding new ones is intuitive. The "src" folder contains the primary controller declarations as
+well as the server declaration.
+The "lib" folder contains all of the libraries needed for the project to work. This is in turn split
+into three other directories. The controllers library handles all of the possible code needed for
+controllers, whereas the server directory pertains only for the server. This is because controllers
+are in their simplest form, clients in this UDP server-client implementation. The shared directory
+is for code that can be applied for both the server and the client (such as socket manipulation and error
+handling).
+# Usage
+Run the server executable first ("src" directory within "build"), after which the three controller 
+executables can be run in any order.
+The server and drive time out after 10 seconds if they do not receive a datagram on their first readings.
