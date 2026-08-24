@@ -9,8 +9,8 @@ This is a simple project in C that creates 3 UDP clients and a server.
 The general logic is that one controller client (driver) sends out a ping to the server.
 The server then sends the ping to the other two clients (powerpack and cooling), which send a pong
 back to the driver client.
-This project was made on Ubuntu and has not been tested on other operating systems. Due to certain
-implementations being linux specific, this is likely not going to work on Windows.
+This project was made on Ubuntu and will not work on non-Unix based systems as there are libraries
+used, which only work within the Unix framework.
 ## File structure
 The general structure for the files follow such that the controllers are easily accessible and
 adding new ones is intuitive. The "src" folder contains the primary controller declarations as
