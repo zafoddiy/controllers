@@ -1,3 +1,14 @@
+/**
+ * File:        drive.c
+ * Author:      Elias Sepp
+ * Created:     14.10.2024
+ * Last edit:   24.08.2026
+ *
+ * Description: File for the 'drive' controller. Uses UDP
+ *              based connection to send a ping to other
+ *              controllers, and receives a datagram from
+ *              them back.
+ */
 #include "controllers.h"
 
 int main() {

@@ -1,4 +1,13 @@
-
+/**
+ * File:        cooling.c
+ * Author:      Elias Sepp
+ * Created:     14.10.2024
+ * Last edit:   24.08.2026
+ *
+ * Description: File for the 'cooling' controller. Uses UDP
+ *              based connection to listen for a ping, then
+ *              sends a datagram forward to server.
+ */
 #include "controllers.h"
 
 int main() {

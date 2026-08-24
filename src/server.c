@@ -1,3 +1,13 @@
+/**
+ * File:        server.c
+ * Author:      Elias Sepp
+ * Created:     12.10.2024
+ * Last edit:   24.08.2026
+ *
+ * Description: File for main server. Makes connections between each
+ *              controller and manages the sending of datagrams to and
+ *              from each controller.
+ */
 #include "controllers.h"
 
 int main() {

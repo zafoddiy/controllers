@@ -1,5 +1,29 @@
+/**
+ * File:        processing.c
+ * Author:      Elias Sepp
+ * Created:     16.10.2024
+ * Last edit:   24.08.2026
+ *
+ * Description: Server functions for processing datagrams to and from
+ *              controllers.
+ */
 #include "controllers.h"
 
+/**
+ * Function:       create_socket
+ *
+ * Description:    Receives datagram from controller, processes if it
+ *                 is a ping-sending controller or not. Error checking
+ *                 to ensure only 1 controller is sending pings.
+ *
+ * Parameters:     sockfd - int, file descriptor of socket
+ *                 contr - Controller struct, data received from controller
+ *                 client_addr - sockaddr_in, address of incoming client
+ *                 client_addr_len - socklen_t, size of incoming client's address
+ *                 ping_msg - string, message to be sent to receiving controllers
+ *
+ * Return:         Integer, index of the ping-sending controller.
+ */
 int register_controller(int sockfd, Controller contr, struct sockaddr_in *client_addr, socklen_t *client_addr_len, char *ping_msg)
 {
     int ping_loc = -1;
@@ -27,6 +51,19 @@ int register_controller(int sockfd, Controller contr, struct sockaddr_in *client
     return ping_loc;
 }
 
+/**
+ * Function:       send_ping
+ *
+ * Description:    Checks if datagram is a ping and sends to the receiving controllers.
+ *
+ * Parameters:     ping_msg - string, ping message
+ *                 ping_loc - int, index of ping-sending controller
+ *                 sockfd - int, socket file descriptor
+ *                 client_addr - sockaddr_in, client IP address struct
+ *                 client_addr_len - socklen_t, client IP address struct size
+ *
+ * Return:         None
+ */
 void send_ping(char* ping_msg, int ping_loc, int sockfd, struct sockaddr_in *client_addr, socklen_t *client_addr_len)
 {
     if (strcmp(ping_msg, "ping") == 0) {
@@ -40,6 +77,20 @@ void send_ping(char* ping_msg, int ping_loc, int sockfd, struct sockaddr_in *cli
     }
 }
 
+/**
+ * Function:       process_pong
+ *
+ * Description:    Receives pong message from controllers and sends
+ *                 to ping-sending controller.
+ *
+ * Parameters:     ping_loc - int, index of ping-sending controller
+ *                 sockfd - int, socket file descriptor
+ *                 contr - Controller struct, data received from controller
+ *                 client_addr - sockaddr_in, client IP address struct
+ *                 client_addr_len - socklen_t, client IP address struct size
+ *
+ * Return:         None
+ */
 void process_pong(int ping_loc, int sockfd, Controller contr, struct sockaddr_in *client_addr, socklen_t *client_addr_len)
 {
     for (int i = 0; i < CONTR_NUM; i++){
